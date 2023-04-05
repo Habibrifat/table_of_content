@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from "react";
 import ColorPicker from "react-color-picker";
 import "react-color-picker/index.css";
+import { ChromePicker } from "react-color";
 
 const Table = () => {
   const options = [
@@ -39,7 +40,8 @@ const Table = () => {
     { label: "No Indention", value: "No Indention" },
   ];
 
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState("#fff");
+  const [showColorPicker, setShowColorPicker] = useState(false);
 
   const [theme, setTheme] = useState(" ");
   const [indention, setIndention] = useState(" ");
@@ -107,6 +109,10 @@ const Table = () => {
   const onDrag = (color, c) => {
     setColor(color);
   };
+
+  // const handleColor = (updateColor) => {
+  //   setColor(updateColor);
+  // };
 
   return (
     <form className="container bg-[#F6F6F7] p-5">
@@ -320,8 +326,8 @@ const Table = () => {
             the theme widget styles.
           </p>
         </div>
-        {/* <div className="select-container w-1/2 max-[720px]:w-full bg-white shadow-lg p-4 rounded">
-          <div>
+        <div className="color-container w-1/2 max-[720px]:w-full bg-white shadow-lg p-4 rounded">
+          {/* <div>
             <ColorPicker value={color} onDrag={onDrag} />
             <div
               style={{
@@ -333,8 +339,45 @@ const Table = () => {
             >
               {color}
             </div>
+          </div> */}
+          {/* <div className="">
+            <button
+              onClick={() =>
+                setShowColorPicker((showColorPicker) => !showColorPicker)
+              }
+            >
+              {showColorPicker ? "Close Color Picker" : "Pick a Color"}
+            </button>
+            {showColorPicker && (
+              <ChromePicker
+                color={color}
+                onChange={(updatedColor) => setColor(updatedColor.hex)}
+              />
+            )}
+
+            <h2>You Picked {color}</h2>
+          </div> */}
+          <div className="w-full p-2 bg-white border border-[rgba(201,204,207,1)] shadow rounded flex flex-col items-start justify-center">
+            <button className=" bg-white border shadow p-1">
+              <span className=" bg-black w-1 h-2">24</span> BackgroundColor
+            </button>
+            <button className=" bg-white border shadow p-1">
+              <span className=" bg-black w-1 h-2">24</span> BorderColor
+            </button>
+            <button className=" bg-white border shadow p-1">
+              <span className=" bg-black w-1 h-2">24</span> TitleColor
+            </button>
+            <button className=" bg-white border shadow p-1">
+              <span className=" bg-black w-1 h-2">24</span> LinkColor
+            </button>
+            <button className=" bg-white border shadow p-1">
+              <span className=" bg-black w-1 h-2">24</span> Link Hover Color
+            </button>
+            <button className=" bg-white border shadow p-1">
+              <span className=" bg-black w-1 h-2">24</span> Link Visited Color
+            </button>
           </div>
-        </div> */}
+        </div>
       </div>
       <br />
       <hr />
