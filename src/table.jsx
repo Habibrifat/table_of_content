@@ -1,8 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import ColorPicker from "react-color-picker";
-import "react-color-picker/index.css";
-import { ChromePicker } from "react-color";
+import ColorPicker from "./ColorPicker";
 
 const Table = () => {
   const options = [
@@ -40,9 +38,6 @@ const Table = () => {
     { label: "No Indention", value: "No Indention" },
   ];
 
-  const [color, setColor] = useState("#fff");
-  const [showColorPicker, setShowColorPicker] = useState(false);
-
   const [theme, setTheme] = useState(" ");
   const [indention, setIndention] = useState(" ");
   const [position, setPosition] = useState(" ");
@@ -56,6 +51,32 @@ const Table = () => {
   const [checkedSix, setCheckedSix] = useState(false);
 
   const [checkedScroll, setCheckedScroll] = useState(false);
+
+  const [color1, setColor1] = useState("#B07979");
+  const [color2, setColor2] = useState("#FF0000");
+  const [color3, setColor3] = useState("#BAB2B2");
+  const [color4, setColor4] = useState("#5F84A4");
+  const [color5, setColor5] = useState("#30608B");
+  const [color6, setColor6] = useState("#5286B3");
+
+  const handleColorChange1 = (newColor) => {
+    setColor1(newColor);
+  };
+  const handleColorChange2 = (newColor) => {
+    setColor2(newColor);
+  };
+  const handleColorChange3 = (newColor) => {
+    setColor3(newColor);
+  };
+  const handleColorChange4 = (newColor) => {
+    setColor4(newColor);
+  };
+  const handleColorChange5 = (newColor) => {
+    setColor5(newColor);
+  };
+  const handleColorChange6 = (newColor) => {
+    setColor6(newColor);
+  };
 
   const handletheme = (e) => {
     console.log("fruits changed", e.target.value);
@@ -105,14 +126,6 @@ const Table = () => {
   const handleChangeScroll = () => {
     setCheckedScroll(!checkedScroll);
   };
-
-  const onDrag = (color, c) => {
-    setColor(color);
-  };
-
-  // const handleColor = (updateColor) => {
-  //   setColor(updateColor);
-  // };
 
   return (
     <form className="container bg-[#F6F6F7] p-5">
@@ -327,55 +340,39 @@ const Table = () => {
           </p>
         </div>
         <div className="color-container w-1/2 max-[720px]:w-full bg-white shadow-lg p-4 rounded">
-          {/* <div>
-            <ColorPicker value={color} onDrag={onDrag} />
-            <div
-              style={{
-                background: color,
-                width: 100,
-                height: 50,
-                color: "white",
-              }}
-            >
-              {color}
-            </div>
-          </div> */}
-          {/* <div className="">
-            <button
-              onClick={() =>
-                setShowColorPicker((showColorPicker) => !showColorPicker)
-              }
-            >
-              {showColorPicker ? "Close Color Picker" : "Pick a Color"}
-            </button>
-            {showColorPicker && (
-              <ChromePicker
-                color={color}
-                onChange={(updatedColor) => setColor(updatedColor.hex)}
-              />
-            )}
-
-            <h2>You Picked {color}</h2>
-          </div> */}
           <div className="w-full p-2 bg-white border border-[rgba(201,204,207,1)] shadow rounded flex flex-col items-start justify-center">
-            <button className=" bg-white border shadow p-1">
-              <span className=" bg-black w-1 h-2">24</span> BackgroundColor
-            </button>
-            <button className=" bg-white border shadow p-1">
-              <span className=" bg-black w-1 h-2">24</span> BorderColor
-            </button>
-            <button className=" bg-white border shadow p-1">
-              <span className=" bg-black w-1 h-2">24</span> TitleColor
-            </button>
-            <button className=" bg-white border shadow p-1">
-              <span className=" bg-black w-1 h-2">24</span> LinkColor
-            </button>
-            <button className=" bg-white border shadow p-1">
-              <span className=" bg-black w-1 h-2">24</span> Link Hover Color
-            </button>
-            <button className=" bg-white border shadow p-1">
-              <span className=" bg-black w-1 h-2">24</span> Link Visited Color
-            </button>
+            <div>
+              <ColorPicker
+                defaultColor={color1}
+                onChange={handleColorChange1}
+                name={"BackgroundColor"}
+              />
+              <ColorPicker
+                defaultColor={color2}
+                onChange={handleColorChange2}
+                name={"BorderColor"}
+              />
+              <ColorPicker
+                defaultColor={color3}
+                onChange={handleColorChange3}
+                name={"TitleColor"}
+              />
+              <ColorPicker
+                defaultColor={color4}
+                onChange={handleColorChange4}
+                name={"LinkColor"}
+              />
+              <ColorPicker
+                defaultColor={color5}
+                onChange={handleColorChange5}
+                name={"Link Hover Color"}
+              />
+              <ColorPicker
+                defaultColor={color6}
+                onChange={handleColorChange6}
+                name={"Link Visited Color"}
+              />
+            </div>
           </div>
         </div>
       </div>
